@@ -32,18 +32,18 @@ public class LibroController {
         return this.libroService.guardarLibro(libro);
     }
 
-    @GetMapping(path = "/isbn")
+    @GetMapping(path = "/{isbn}")
     public Optional<LibroModel> obtenerPorId(@PathVariable("isbn") Long isbn){
         return this.libroService.obtenerPorID(isbn);
     }
 
-    @PutMapping(path = "{/isbn}")
+    @PutMapping(path = "/{isbn}")
     public LibroModel actualizarLibro(@RequestBody LibroModel request, @PathVariable("isbn") Long isbn){
         return this.libroService.actualizarLibro(request, isbn);
 
     }
 
-    @DeleteMapping(path = "{/isbn}")
+    @DeleteMapping(path = "/{isbn}")
     public String eliminarPorId(@PathVariable("isbn")Long isbn){
         boolean ok = this.libroService.eliminarLibro(isbn) ;
         if (ok){
